@@ -8,9 +8,16 @@
         <form name = "form" method = "GET">
             Primer valor: <input type="number" name="fvalue" /><br />
             Segundo Valor:  <input type="number" name="svalue" /><br />
-            <input type="submit" name="Submit" value="Enviar" />
+            <input type="button" name="sub" value="Resta" onclick="sub_submit()"/>
+            <input type="button" name="add" value="Suma" />
+            <input type="button" name="div" value="Division" />
+            <input type="button" name="mul" value="Multiplicación" />
         </form>
         <script type="text/javascript">
+            function sub_submit(){
+                document.form.action = "resta.php"
+                document.form.submit();
+            }
             
         </script>
     </body>
