@@ -8,14 +8,26 @@
         <form name = "form" method = "GET">
             Primer valor: <input type="number" name="fvalue" /><br />
             Segundo Valor:  <input type="number" name="svalue" /><br />
-            <input type="button" name="sub" value="Resta" onclick="sub_submit()"/>
-            <input type="button" name="add" value="Suma" />
-            <input type="button" name="div" value="Division" />
-            <input type="button" name="mul" value="Multiplicación" />
+            <input type="button" name="sub" value = "Resta" onclick="sub_submit()"/>
+            <input type="button" name="add" value = "Suma" onclick="add_submit()"/>
+            <input type="button" name="div" value = "Division" onclick="div_submit()"/>
+            <input type="button" name="mul" value = "Multiplicacion" onclick="mul_submit()"/>
         </form>
         <script type="text/javascript">
             function sub_submit(){
                 document.form.action = "resta.php"
+                document.form.submit();
+            }
+            function add_submit(){
+                document.form.action = "suma.php"
+                document.form.submit();
+            }
+            function div_submit(){
+                document.form.action = "division.php"
+                document.form.submit();
+            }
+            function mul_submit(){
+                document.form.action = "producto.php"
                 document.form.submit();
             }
             
