@@ -4,46 +4,42 @@
     <head>
         <title>Calculadora con PHP</title>
         <script src = "//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <style>
+            body{
+                background-color: #9FFFCB;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .button{
+                background-color: #00A5CF;
+            }
+            .button:hover{
+                background-color: #004E64;
+            }
+        </style>
     </head>
     <body>
             Primer valor: <input type="number" id="fvalue" /><br />
             Segundo Valor:  <input type="number" id="svalue" /><br />
-            <input type="button" id="sub" value = "Resta" onclick="sub_submit()"/>
-            <input type="button" id="add" value = "Suma" onclick="add_submit()"/>
-            <input type="button" id="div" value = "Division" onclick="div_submit()"/>
-            <input type="button" id="mul" value = "Multiplicacion" onclick="mul_submit()"/><br>
-            <div id="result"></div>
+            <input type="button" class ="button" id="sub" name = "resta.php" value = "Resta"/>
+            <input type="button" class ="button" id="add" name = "suma.php" value = "Suma"/>
+            <input type="button" class ="button" id="div" name = "division.php" value = "Division"/>
+            <input type="button" class ="button" id="mul" name = "producto.php" value = "Multiplicacion"/><br>
+            <div style = "margin: 2% 10%; font-family: Arial, Helvetica, sans-serif;  text-align: center;" id="result">no inputs</div>
     
         <script type="text/javascript">
-            function sub_submit(){
-                show();
-            }
-            function add_submit(){
-                document.form.action = "suma.php"
-                document.form.submit();
-            }
-            function div_submit(){
-                document.form.action = "division.php"
-                document.form.submit();
-            }
-            function mul_submit(){
-                document.form.action = "producto.php"
-                document.form.submit();
-            }
-            function show(){
-                $('#sub').click(function(){
-                    var fval = $('#fvalue').val();
-                    var sval = $('#svalue').val();
+                $(".button").click(function() {
+                    var n = $(this).attr('name');
+                    var val1 = $('#fvalue').val();
+                    var val2 = $('#svalue').val();
                     $.ajax({
-                        type: 'POST',
-                        url: 'resta.php',
-                        data: {text1: fval, text2: sval},
+                        type: "POST",
+                        url: n,
+                        data: {text1: val1, text2: val2},
                         success: function(response){
                             $('#result').html(response);
                         }
                     });
                 });
-            }
             
         </script>
     </body>
