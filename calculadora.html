@@ -3,20 +3,20 @@
 <html>
     <head>
         <title>Calculadora con PHP</title>
+        <script src = "//code.jquery.com/jquery-1.12.0.min.js"></script>
     </head>
     <body>
-        <form name = "form" method = "GET">
-            Primer valor: <input type="number" name="fvalue" /><br />
-            Segundo Valor:  <input type="number" name="svalue" /><br />
-            <input type="button" name="sub" value = "Resta" onclick="sub_submit()"/>
-            <input type="button" name="add" value = "Suma" onclick="add_submit()"/>
-            <input type="button" name="div" value = "Division" onclick="div_submit()"/>
-            <input type="button" name="mul" value = "Multiplicacion" onclick="mul_submit()"/>
-        </form>
+            Primer valor: <input type="number" id="fvalue" /><br />
+            Segundo Valor:  <input type="number" id="svalue" /><br />
+            <input type="button" id="sub" value = "Resta" onclick="sub_submit()"/>
+            <input type="button" id="add" value = "Suma" onclick="add_submit()"/>
+            <input type="button" id="div" value = "Division" onclick="div_submit()"/>
+            <input type="button" id="mul" value = "Multiplicacion" onclick="mul_submit()"/><br>
+            <div id="result"></div>
+    
         <script type="text/javascript">
             function sub_submit(){
-                document.form.action = "resta.php"
-                document.form.submit();
+                show();
             }
             function add_submit(){
                 document.form.action = "suma.php"
@@ -29,6 +29,20 @@
             function mul_submit(){
                 document.form.action = "producto.php"
                 document.form.submit();
+            }
+            function show(){
+                $('#sub').click(function(){
+                    var fval = $('#fvalue').val();
+                    var sval = $('#svalue').val();
+                    $.ajax({
+                        type: 'POST',
+                        url: 'resta.php',
+                        data: {text1: fval, text2: sval},
+                        success: function(response){
+                            $('#result').html(response);
+                        }
+                    });
+                });
             }
             
         </script>

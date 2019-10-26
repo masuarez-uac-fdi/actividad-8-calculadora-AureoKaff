@@ -1,4 +1,5 @@
 <?php // Implementación de la operación resta
-    $total = $_GET["fvalue"] - $_GET["svalue"];
-    echo $total;
+    $f = (float)$_POST["text1"];
+    $s = (float)$_POST["text2"];
+    echo  $f - $s;
 ?>
